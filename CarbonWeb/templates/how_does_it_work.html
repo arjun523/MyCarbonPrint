@@ -1,0 +1,183 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block content %}
+
+<section id="how_does_it_work" class="tm-section-pad-top">
+    <div class="container">
+      <div class="row tm-content-box">
+        <!-- first row -->
+        <div class="col-lg-12 col-xl-12">
+          <div class="tm-intro-text-container">
+            <h2 class="tm-text-primary mb-4 tm-section-title">How does it work?</h2>
+            <p class="mb-4 tm-intro-text">
+                <span style="font-weight: 400"
+                  >Calculating the carbon emissions of website is somewhat of a
+                  challenge, but using five key pieces of data we can make a
+                  pretty good estimate:</span
+                >
+              </p>
+              <ol>
+                <li style="font-weight: 400">
+                  <span style="font-weight: 400"
+                    >Data transfer over the wire</span
+                  >
+                </li>
+                <li style="font-weight: 400">
+                  <span style="font-weight: 400"
+                    >Energy intensity of web data</span
+                  >
+                </li>
+                <li style="font-weight: 400">
+                  <span style="font-weight: 400"
+                    >Energy source used by the data centre</span
+                  >
+                </li>
+                <li style="font-weight: 400">
+                  <span style="font-weight: 400"
+                    >Carbon intensity of electricity</span
+                  >
+                </li>
+                <li style="font-weight: 400">
+                  <span style="font-weight: 400">Website traffic</span>
+                </li>
+              </ol>
+              <h2>Data transfer over the wire</h2>
+              <p>
+                <span style="font-weight: 400"
+                  >When a website is loaded, the energy used is roughly
+                  proportional to the amount of data transferred.&nbsp; We measure
+                  the data transferred over the wire when a web page is loaded,
+                  and multiply that by the energy usage data that we have.&nbsp;
+                  We also make an adjustment for repeat visitors who may have
+                  website assets cached on their devices.</span
+                >
+              </p>
+              <h2>Energy intensity of web data</h2>
+              <p>
+                <span style="font-weight: 400"
+                  >Energy is used at the data centre, telecoms networks and by the
+                  end user’s computer or mobile device.&nbsp; Of course, this
+                  varies for every website and every visitor and so we use an
+                  average figure. The figures used are for 2017 from the report </span
+                ><a
+                  href="https://www.mdpi.com/2078-1547/6/1/117#abstract"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  ><span style="font-weight: 400"
+                    >On Global Electricity Usage of Communication Technology:
+                    Trends to 2030</span
+                  ></a
+                ><span style="font-weight: 400">
+                  by Anders Andrae and Tomas Edler, adjusted to remove
+                  manufacturing energy as this is not relevant to this calculator.
+                  We then divide the total amount of energy used by the total
+                  annual data transfer over the web as reported in the Nature
+                  article, </span
+                ><a
+                  href="https://www.nature.com/articles/d41586-018-06610-y"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  ><span style="font-weight: 400"
+                    >How to stop data centres gobbling up the world’s
+                    electricity</span
+                  ></a
+                ><span style="font-weight: 400"
+                  >. This gives us a figure of 1.8kWh/GB.</span
+                >
+              </p>
+              <h2>Energy source used by the data centre</h2>
+              <p>
+                <span style="font-weight: 400"
+                  >To gauge the energy source, we assume that all websites use
+                  standard grid electricity for the telecoms network and end user,
+                  since we have no way to determine otherwise.&nbsp; For the data
+                  centre energy use, we check the </span
+                ><a
+                  href="https://www.thegreenwebfoundation.org/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  ><span style="font-weight: 400">Green Web Foundation</span></a
+                ><span style="font-weight: 400">
+                  (GWF) database to see if the data centre is using green
+                  energy.&nbsp; If so, then we reduce the carbon emissions
+                  attributed to that portion of the energy accordingly. We
+                  estimate the proportion of energy used in the data centres to be
+                  approximately 10% by comparing the global data centre energy
+                  usage stated in the Nature article to total ICT energy usage
+                  (excluding manufacturing) in the Andrae and Edler report. Of
+                  course, the GWF database is not 100% perfect and also includes
+                  data centres that purchase standard grid electricity but offset
+                  their emissions.&nbsp; For the purposes of this calculator, we
+                  treat them all the same.</span
+                >
+              </p>
+              <h2>Carbon intensity of electricity</h2>
+              <p>
+                <span style="font-weight: 400"
+                  >The carbon intensity of grid electricity is based on the
+                  international average as reported by the </span
+                ><a
+                  href="https://www.iea.org/geco/emissions/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  ><span style="font-weight: 400"
+                    >International Energy Agency</span
+                  ></a
+                ><span style="font-weight: 400">
+                  (475 grams CO2e per kWh) and renewable energy is based on data
+                  for wind energy from Ecotricity (33.4 grams CO2e per kWh).</span
+                >
+              </p>
+              <h2>Website traffic</h2>
+              <p>
+                <span style="font-weight: 400"
+                  >When we put all of this information together, we get a pretty
+                  good idea of the emissions associated with an average user
+                  visiting any given website.&nbsp; Multiply carbon per page view
+                  up by the typical number of annual page views and we can
+                  estimate the total annual CO2 emissions.</span
+                >
+              </p>
+              <h2>Which pages do we test?</h2>
+          <p>
+            The public version of the tool is designed to be simple and give a
+            rough idea of website efficiency and so we only test the homepage
+            of a site.&nbsp; We hope to later release a more advanced version
+            with the option to test specific internal pages.
+          </p>
+          <p>
+            Any website can be tested but only sites that comply with the
+            following guidelines are included in our ranking tables:
+          </p>
+          <ul>
+            <li>
+              Can be accessed by the public through a standard web browser
+            </li>
+            <li>Do not require login</li>
+            <li>Allow search engines</li>
+            <li>
+              Contain unique content aimed at human visitors – this excludes
+              holding pages, error pages, server notification pages, demo
+              pages or pages that are generally useless (this is highly
+              subjective)
+            </li>
+            <li>Are free from illegal or explicit content</li>
+          </ul>
+          <p>
+            Websites that do not meet the above criteria may be deleted from
+            our database and/or excluded from ranking tables.
+          </p>
+          <p>
+            Ready to
+            <a href="{% url 'index' %}">test your website</a>?
+          </p>
+          <p>
+            Please check
+            <a href="{% url 'faqs' %}">FAQ</a> before
+            sending an email.
+          </p>
+          </div>
+        </div>
+      </div>
+
+{% endblock %}

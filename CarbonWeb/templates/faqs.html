@@ -1,0 +1,116 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block content %}
+
+<section id="faqs" class="tm-section-pad-top">
+    <div class="container">
+      <div class="row tm-content-box">
+        <!-- first row -->
+        <div class="col-lg-12 col-xl-12">
+          <div class="tm-intro-text-container">
+            <h2 class="tm-text-primary mb-4 tm-section-title">Frequently Asked Questions (FAQ)</h2>
+            <h2>How does the carbon calculator work?</h2>
+            <p class="mb-4 tm-intro-text">                  
+                Please see our ‘<a
+                  href="#how_does_it_work"
+                  >How does it work?</a
+                >‘ page for details.
+              </p>
+              <h2>Why does the test fail on my website?</h2>
+              <p>
+                We sometimes have trouble testing a url. This is generally for one
+                of two reasons:
+              </p>
+              <ol>
+                <li>If your website is very slow, the test may time out.</li>
+                <li>
+                  If there are routing issues in your DNS settings, it can make it
+                  impossible for our test to load the page
+                </li>
+              </ol>
+              <p>
+                Please check your load times and DNS settings before asking us to
+                investigate a failed test.
+              </p>
+              <h2>I use green hosting, but your test says I don’t. Why?</h2>
+              <p>
+                Sometimes we cannot detect green hosting for the following
+                reasons:
+              </p>
+              <ol>
+                <li>
+                  If your hosting provider has not registered the IP address of
+                  your server with
+                  <a
+                    href="https://www.thegreenwebfoundation.org/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >The Green Web Foundation</a
+                  >, we will not be able to detect it. Please check with your
+                  hosting provider to see if this is the case.
+                </li>
+                <li>
+                  If you are using a CDN, then we will not be able to identify the
+                  IP address of your main web host and the test will judge the CDN
+                  provider as the host.
+                </li>
+                <li>
+                  Occasionally, we may not be able to obtain results for The Green
+                  Web Foundation API, in which case the test will state that the
+                  website appears to be using bog standard energy. When this
+                  happens, it is only ever temporary so try testing again the next
+                  day.
+                </li>
+              </ol>
+              <h2>
+                I changed my website but the test results don’t change. Why not?
+              </h2>
+              <p>
+                We cache test results for one day, so if you are making changes to
+                a website and testing each time, you won’t see any difference
+                unless you wait until the next day and test again. This helps
+                minimise the number of requests on the server, which is more
+                sustainable.
+              </p>
+              <h2>Are test results public?</h2>
+              <p>
+                Yes, when you submit a url for testing, it generates a public
+                report with the results.
+              </p>
+              <h2>Can I test private urls?</h2>
+              <p>
+                It depends on how you define private. You <em>can</em> test pages
+                that are blocked from search engines, so long as they can be
+                accessed without a password. Please be cautious testing these as
+                every test will generate a public, search engine indexable results
+                page (see below about deleting such pages).
+              </p>
+              <p>
+                We <em>cannot</em> test pages protected by a password or on a
+                local server. However, the carbon calculator code is open source
+                so please do feel free to contribute a solution if this is
+                something that you need.
+              </p>
+              <h2>Can you delete my test results?</h2>
+              <p>
+                If you have submitted a test and do not want the results public,
+                then we have a simple policy.
+              </p>
+              <ol>
+                <li>
+                  If you tested a private development url
+                  <em>by accident</em> (please don’t do it on purpose) and need to
+                  delete the public results page, please get in touch and we will
+                  delete the record as soon as we can.
+                </li>
+                <li>
+                  If you have tested a public url we will not delete the results.
+                </li>
+              </ol>
+              </div>
+              </div>
+              </div>
+              </div>
+              </section>
+
+{% endblock %}

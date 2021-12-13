@@ -1,0 +1,152 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block content %}
+
+    <section id="infinite" class="text-white tm-font-big tm-parallax">
+      <div class="text-center tm-hero-text-container">
+        <div class="tm-hero-text-container-inner"><br>
+        <br><br>
+          <br><br><h2 class="tm-hero-title">Welcome to</h2>
+          <h2 class="tm-hero-title" style="color: aqua">MyCarbonPrint</h2>
+          <p class="tm-hero-subtitle">
+            <br />How is your website impacting the planet?<br />
+            Your Webpage address
+          </p>
+          <form
+            class="example" action="{% url 'result' %}" style="margin: auto; max-width: 300px" method="post"
+          >
+          {% csrf_token %}
+            <input type="text" placeholder="Webpage url.." name="search_id" />
+            <button type="submit"><i class="fa fa-search"></i></button>
+          </form>
+          <br />
+          <br />
+          <p
+            style="
+              text-align: left;
+              position: absolute;
+              font-size: small;
+              color: aquamarine;
+            "
+          >
+            By using this carbon calculator, you agree to the information that
+            you submit<br />being stored and published in our database.
+          </p>
+        </div>
+      </div>
+
+      <!-- <div class="tm-next tm-intro-next">
+        <a href="#whatwedo" class="text-center tm-down-arrow-link">
+          <i class="fas fa-2x fa-arrow-down tm-down-arrow"></i>
+        </a>
+      </div>       -->
+    </section>
+
+    <section id="whatwedo" class="tm-section-pad-top">
+      <div class="container">
+        <div class="row tm-content-box">
+          <!-- first row -->
+          <div class="col-lg-12 col-xl-12">
+            <div class="tm-intro-text-container">
+              <h2 class="tm-text-primary mb-4 tm-section-title">Effect of Internet on Environment</h2>
+              <p class="mb-4 tm-intro-text">
+                The internet consumes a lot of electricity. <strong>416.2TWh per year</strong> to
+                be precise. To give you some perspective, that’s more than the
+                entire United Kingdom. From data centres to transmission
+                networks to the devices that we hold in our hands, it is all
+                consuming electricity, and in turn producing carbon emissions.
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- first row -->
+
+        <div class="row tm-content-box">
+          <!-- second row -->
+          <div class="col-lg-1">
+            <i class="far fa-3x fa-chart-bar text-center tm-icon"></i>
+          </div>
+          <div class="col-lg-5">
+            <div class="tm-intro-text-container">
+              <h2 class="tm-text-primary mb-4">Data Analysis</h2>
+              <p class="mb-4 tm-intro-text">
+                The average web page tested produces <b>1.76 grams CO2</b> per
+                page view. For a website with <b>10,000</b> monthly page views,
+                that's <b>211 kg CO2</b> per year.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-1">
+            <i class="far fa-3x fa-comment-alt text-center tm-icon"></i>
+          </div>
+          <div class="col-lg-5">
+            <div class="tm-intro-text-container">
+              <h2 class="tm-text-primary mb-4">Carbon Footprint of Email</h2>
+              <p class="mb-4 tm-intro-text">
+                Researchers have found out that a normal email contains about
+                <b>4g of carbon footprint</b>, which is a cause of concern for
+                the environment. Any email message that you send across uses the
+                energy for storing and transmitting the information through data
+                centres.
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- second row -->
+
+        <div class="row tm-content-box">
+          <!-- third row -->
+          <div class="col-lg-1">
+            <i class="fas fa-3x fa-fingerprint text-center tm-icon"></i>
+          </div>
+          <div class="col-lg-5">
+            <div class="tm-intro-text-container">
+              <h2 class="tm-text-primary mb-4">
+                Ways to make your website more energy efficient
+              </h2>
+              <p class="mb-4 tm-intro-text">
+                The way the internet evolution is unfolding weirdly resembles
+                the Big Bang theory of how universe began. Estimates show that
+                there are <strong>1.18 billion</strong> websites in the World at
+                the moment. As per the calculations, approx.
+                <strong>175 new websites</strong> are created every minute!
+              </p>
+
+              <div class="tm-continue">
+                <a
+                  href="https://www.wholegraindigital.com/blog/website-energy-efficiency/"
+                  class="tm-intro-text tm-btn-primary"
+                  >Learn More</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-1">
+            <i class="fas fa-3x fa-users text-center tm-icon"></i>
+          </div>
+          <div class="col-lg-5">
+            <div class="tm-intro-text-container">
+              <h2 class="tm-text-primary mb-4">Survey Report</h2>
+              <p class="mb-4 tm-intro-text">
+                We conducted a survey on
+                <strong
+                  >Creating An Internet Powered by 100% Renewable Energy</strong
+                >. To know the survey details, click on the below link.
+              </p>
+              <div class="tm-continue">
+                <a
+                  href="https://youtu.be/1pOSq0mfcb0"
+                  class="tm-intro-text tm-btn-primary"
+                  >Watch Now</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- third row -->
+      </div>
+    </section>
+  
+{% endblock %}
