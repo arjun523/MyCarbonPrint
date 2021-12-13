@@ -1,1 +1,1 @@
-web: gunicorn CarbonFootprint.wsgi --timeout 120 -
+web: gunicorn CarbonFootprint.wsgi --timeout 120
