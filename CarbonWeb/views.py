@@ -79,13 +79,18 @@ def greenCheck(input_url):
     return green
 
 def transferredBytes(input_url):
-    API_Key = 'AIzaSyAdpoic86udin8tkqVAv3fBjPJajI2Wsfo'
-    result = f"https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url={input_url}&key={API_Key}&strategy=mobile"
-    r = requests.get(result)
-    finalf = r.json()
-    transfered_bytes= finalf['lighthouseResult']['audits']['resource-summary']['details']['items'][0]['transferSize']
-    score = finalf["lighthouseResult"]["categories"]["performance"]["score"]
-    overall_score = score *100
+    transfered_bytes=0
+    overall_score=0
+    try:
+        API_Key = 'AIzaSyAdpoic86udin8tkqVAv3fBjPJajI2Wsfo'
+        result = f"https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url={input_url}&key={API_Key}&strategy=mobile"
+        r = requests.get(result)
+        finalf = r.json()
+        transfered_bytes= finalf['lighthouseResult']['audits']['resource-summary']['details']['items'][0]['transferSize']
+        score = finalf["lighthouseResult"]["categories"]["performance"]["score"]
+        overall_score = score *100
+    except Exception as e:
+        print(e)
     return [transfered_bytes,overall_score]
 
 def AdjustDataTransfer(bytes):
@@ -174,10 +179,10 @@ def result(request):
     user_msg = request.POST.get('Message')
 
     normalise_url = url_normalize(input_url)
-    print(input_url,normalise_url,urlValidation(normalise_url))
+    # print(input_url,normalise_url,urlValidation(normalise_url))
     db_url = co2web.objects.filter(url=normalise_url)
-    print(db_url.exists())
-    if((urlValidation(normalise_url) != False) and db_url.exists()==False):
+    # print(db_url.exists())
+    if((input_url != "None") and db_url.exists()==False):
         if(urlValidation(normalise_url)):
             if "https://www" in normalise_url:
                 base = normalise_url[12:-1]
@@ -218,7 +223,7 @@ def result(request):
             else:
                 msg2 = "tree"
 
-            print(co2,percentage,overall_score,statistics['adjustedbytes'],statistics["energy"],statistics['CO2']['grid']['grams'],statistics['CO2']['renewable']['grams'])
+            # print(co2,percentage,overall_score,statistics['adjustedbytes'],statistics["energy"],statistics['CO2']['grid']['grams'],statistics['CO2']['renewable']['grams'])
             normalise_url = normalise_url[:30]
             obj = co2web(url = normalise_url, co2 = co2, date = date.today(), green_web = green_result,
             cleaner_than = percentage*100, co2_equivalent = round(co2*123.3,3) ,sumo_weight = round(((co2*123.3)/154.125),3),
@@ -239,9 +244,9 @@ def result(request):
     
     elif((user_name!=None and user_email!=None and user_msg!=None)):
         data = co2web.objects.filter(url = normalise_url)
-        print("yes")
+        # print("yes")
         if(emailMessage(user_name,user_email,user_msg)):
-            print("sending")
+            # print("sending")
             messages.success(request,"Message Sent Successful......We will get back to you soon!!!")
         else:
             messages.error(request,"Email Address Invalid......Try again!!!")
