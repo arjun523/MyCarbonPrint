@@ -84,7 +84,7 @@ def transferredBytes(input_url):
     try:
         API_Key = 'AIzaSyAdpoic86udin8tkqVAv3fBjPJajI2Wsfo'
         result = f"https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url={input_url}&key={API_Key}&strategy=mobile"
-        r = requests.get(result)
+        r = requests.get(result,timeout=120)
         finalf = r.json()
         transfered_bytes= finalf['lighthouseResult']['audits']['resource-summary']['details']['items'][0]['transferSize']
         score = finalf["lighthouseResult"]["categories"]["performance"]["score"]
