@@ -197,6 +197,10 @@ def result(request):
             list_returned = transferredBytes(normalise_url)
             bytes_transferred = list_returned[0]
             overall_score = list_returned[1]
+
+            if(bytes_transferred == 0):
+                return render(request,"error.html")
+
             statistics = Gets_statistics(bytes_transferred)
             if (green_result == True):
                 co2 = statistics['CO2']['renewable']['grams']
